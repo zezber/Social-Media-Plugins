@@ -5,7 +5,7 @@
             $("#showInstagramTab").css("display", "block");
         }
         $.get(
-           '/Egitim/GetInstagramPosts',
+           '/Home/GetInstagramPosts',
              function (result) {
                  result = JSON.parse(result);
                  debugger;
@@ -73,9 +73,9 @@
         fbRefreshTime = 300;
         fbPostTime = 8;
         fbToken =
-            "311224809381545|gNRmbDSfu8jzrKMYWujkSI8eJ0Q";
-        fbClientId = "1723586477871075";
-        fbAppId = "311224809381545";
+            "k|k";
+        fbClientId = "k";
+        fbAppId = "k";
 
         getFacebookPostv2(fbRefreshTime, fbPostTime, fbToken, fbClientId, fbAppId);
 
@@ -126,7 +126,7 @@
                     }
 
                 );
-                //FB.api('/me/feed', 'post', { message: 'Eğitimlerimizi kaçırmayın! www.egitimtakvimi.com', access_token: "EAACEdEose0cBAMMZBT4KRH8821fMPN8VaypfR0jzbaUVhFbkx9Fv5jqoXB033TN2RQkFD4En4Q2bhJUrGYFU3GYcw8twAwIpEJG0hyeojilvvJdK2wK75uCub0JF7aVWtcnFjRUvV7RWq7l7IeXoN4fCOi9D1mS35ZAQCNESvfYX9vcACQ8YZCYzf0M0TEZD" }, function (response) {
+                //FB.api('/me/feed', 'post', { message: 'Eğitimlerimizi kaçırmayın!', access_token: "k" }, function (response) {
                 //    console.log('API response', response);
                 //});
             };
@@ -147,7 +147,7 @@
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) { return; }
                 js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.11&appId=311224809381545";
+                js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.11&appId=k";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 
