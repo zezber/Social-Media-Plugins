@@ -44,7 +44,9 @@
                          var tag = "", tags = "";
                          for (j = 0; j < result.data[i].tags.length; j++) {
                              tag = "#" + result.data[i].tags[j];
-                             tags = tags + '<a target="_blank" href="https://www.instagram.com/explore/tags/' + result.data[i].tags[j] + '/">' + tag + '</a> ';
+                             tags = tags + '
+                             <a target="_blank" href="https://www.instagram.com/explore/tags/' + 
+                             result.data[i].tags[j] + '/">' + tag + '</a> ';
                          }
 
                          //Json data dan gelen sayısal veriyi tarih formatına dönüştürüyoruz.
@@ -53,7 +55,12 @@
 
                          //Post görüntüsünü ve verileri yerleştirdiğimiz div i oluşturuyoruz.
                          captionText = captionText === "" ? "" : captionText.substring(0, 180) + '<br />';
-                         var div = '<div class="item"><div class="well insta-media"><div class="insta-container"><div class="insta-content"><a target="_blank" href="' + result.data[i].link + '"><img src="' + result.data[i].images.standard_resolution.url + '" /></a><p>' + captionText + tags + '</p></div></div></div><div class="alt insta-alt">  <img src="/Content/Images/EgitimTakvimi/genel-kullanim/instagran.svg"/><p>Shared</p></div>';
+                         var div = '<div class="item"><div class="well insta-media">
+                         <div class="insta-container"><div class="insta-content">
+                             <a target="_blank" href="' + result.data[i].link + '">
+                                 <img src="' + result.data[i].images.standard_resolution.url + '" /></a>
+                         <p>' + captionText + tags + '</p></div></div></div><div class="alt insta-alt">  
+                             <img src="/Content/Images/genel-kullanim/instagran.svg"/><p>Shared</p></div>';
 
                          //Div'i ekrana basıyoruz. 
                          $("#InstagramAPICol").append(div);
@@ -105,15 +112,22 @@
 
                         for (i = 0; i < 8; i++) {
                             respo.push(response.data[i]);
-                            var message = response.data[i].message.length > 200 ? response.data[i].message.substring(0, 200) + "..." : response.data[i].message;
+                            var message = response.data[i].message.length > 200 ? 
+                                response.data[i].message.substring(0, 200) + "..." : response.data[i].message;
                             var url = response.data[i].permalink_url;
                             var pictureUrl = response.data[i].full_picture;
                             if (response.data[i].full_picture !== undefined) {
-                                var div = '<div class="item"><div class="well facebook-media"><div class="insta-content"><a target="_blank" href="' + url + '"><img src="' + pictureUrl + '"/></a><p>' + message + '</p></div></div><div class="alt facebook-alt"><i class="fa fa-facebook"></i><p>Posted</p></div>';
+                                var div = '<div class="item"><div class="well facebook-media">
+                                <div class="insta-content"><a target="_blank" href="' + url + '">
+                                    <img src="' + pictureUrl + '"/></a><p>' + message + '</p></div></div>
+                                        <div class="alt facebook-alt"><i class="fa fa-facebook"></i><p>Posted</p></div>';
 
                             }
                             else {
-                                var div = '<div class="item"><div class="well facebook-media"><div class="insta-content"><a target="_blank" href="' + url + '"></a><p>' + message + '</p></div></div><div class="alt facebook-alt"><i class="fa fa-facebook"></i><p>Posted</p></div>';
+                                var div = '<div class="item">
+                                <div class="well facebook-media"><div class="insta-content">
+                                    <a target="_blank" href="' + url + '"></a><p>' + message + '</p></div></div>
+                                        <div class="alt facebook-alt"><i class="fa fa-facebook"></i><p>Posted</p></div>';
 
                             }
                             $("#FacebookAPICol").append(div);
@@ -168,7 +182,11 @@
                 }
                 var postOrder = 0;
                 for (var i = 0; i < response.length; i++) {
-                    var div = '<div class="item"><div class="well twit-media">' + response[i].Text.substring(0, 200) + '</div><div class="alt twit-alt"><i class="fa fa-twitter"></i><p>Tweeted</p></div>';
+                    var div = '<div class="item"><div class="well twit-media">' +
+                        response[i].Text.substring(0, 200)
+                    +
+                        '</div>
+                    <div class="alt twit-alt"><i class="fa fa-twitter"></i><p>Tweeted</p></div>';
 
                     //Div'i ekrana basıyoruz. 
                     $("#TwitterAPICol").append(div);
@@ -194,7 +212,11 @@
                 }
                 var postOrder = 0;
                 for (var i = 0; i < response.values.length; i++) {
-                    var div = '<div class="item"><div class="well linkedin-media">' + response.values[i].updateContent.companyStatusUpdate.share.comment.substring(0, 200) + '</div><div class="alt linkedin-alt"><i class="fa fa-linkedin"></i><p>Shared</p></div>';
+                    var div = '<div class="item">
+                    <div class="well linkedin-media">' + 
+                    response.values[i].updateContent.companyStatusUpdate.share.comment.substring(0, 200) + 
+                        '</div>
+                    <div class="alt linkedin-alt"><i class="fa fa-linkedin"></i><p>Shared</p></div>';
                     $("#LinkednAPICol").append(div);
                     postOrder = postOrder + 1;
                 }
@@ -216,7 +238,13 @@
                 }
                 var postOrder = 0;
                 for (var i = 0; i < response.items.length; i++) {
-                    var div = '<div class="item"><div class="well youtube-media"><a target="_blank" href="https://www.youtube.com/watch?v=' + response.items[i].id.videoId + '"><img class="youtube-media-image" src="' + response.items[i].snippet.thumbnails.medium.url + '"/><p>' + response.items[i].snippet.title + '</p><div class="play-video-homepage"></div></div></a><div class="alt youtube-alt"><i class="fa fa-youtube"></i><p>Shared</p></div>';
+                    var div = '<div class="item"><div class="well youtube-media">
+                    <a target="_blank" href="https://www.youtube.com/watch?v=' + response.items[i].id.videoId + '">
+                        <img class="youtube-media-image" src="' + 
+                    response.items[i].snippet.thumbnails.medium.url + '"/><p>' +
+                    response.items[i].snippet.title + '</p>
+                    <div class="play-video-homepage"></div></div></a>
+                    <div class="alt youtube-alt"><i class="fa fa-youtube"></i><p>Shared</p></div>';
                     //Div'i ekrana basıyoruz. 
                     $("#YoutubeAPICol").append(div);
                     postOrder = postOrder + 1;
@@ -241,7 +269,9 @@
                 var postOrder = 0;
 
                 for (var i = 0; i < responses.User.Slideshow.length; i++) {
-                    var div = '<div class="item"><div class="well slideshare-media">' + responses.User.Slideshow[i].Embed.replace("from", "") + '</div><div class="alt slideshare-alt"><i class="fa fa-slideshare"></i><p>Shared</p></div>';
+                    var div = '<div class="item"><div class="well slideshare-media">' + 
+                        responses.User.Slideshow[i].Embed.replace("from", "") + 
+                        '</div><div class="alt slideshare-alt"><i class="fa fa-slideshare"></i><p>Shared</p></div>';
 
                     $("#SlideShareAPICol").append(div);
                     postOrder = postOrder + 1;
