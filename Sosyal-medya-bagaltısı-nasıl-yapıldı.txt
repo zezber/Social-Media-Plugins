@@ -2,37 +2,37 @@
 
 https://github.com/adrianengine/jquery-spectragram/wiki/How-to-get-Instagram-API-access-token-and-fix-your-broken-feed
 
--clientId: Manage Clients sekmesinde görülen ClientId
+-clientId: Manage Clients sekmesinde gÃ¶rÃ¼len ClientId
 
 
---Client Token elde etmek için--
+--Client Token elde etmek iÃ§in--
 
 --Edit Client de Disable Imlpicit OAuth isaretleme , unchecked yap
 --
-https://www.instagram.com/oauth/authorize/?client_id=a52dbbed09524a0c83dd2f3620da3386&redirect_uri=http://localhost:3000&response_type=token&scope=public_content
+https://www.instagram.com/oauth/authorize/?client_id=key&redirect_uri=http://localhost:3000&response_type=token&scope=public_content
 
 yukaridaki adreste bulunan client-id'yi kendi client Id ile esitle.
--redirect-uri insatgram postlarini basmaya çalistigin sitenin url li olmali.
-(Bu url ayrica Client olustururlen belirttigin Valid redirect URLs de tanimli olmali.Benimkisinin sonunda # oldugu için hata vermisti silince düzeldi)
-Yukardaki kendi bilgilerinde degistirmis olduun url'e git karsina instagramin sayfasi çikicak Authorize tikla
-Yeni açilan sayfada access_token= sekilinde görülecek.
+-redirect-uri insatgram postlarini basmaya Ã§alistigin sitenin url li olmali.
+(Bu url ayrica Client olustururlen belirttigin Valid redirect URLs de tanimli olmali.Benimkisinin sonunda # oldugu iÃ§in hata vermisti silince dÃ¼zeldi)
+Yukardaki kendi bilgilerinde degistirmis olduun url'e git karsina instagramin sayfasi Ã§ikicak Authorize tikla
+Yeni aÃ§ilan sayfada access_token= sekilinde gÃ¶rÃ¼lecek.
 
 
 
-        var token = '1413086881.1677ed0.b4f8ed86c4dd4c37920652428391fa8b', // learn how to obtain it below
-        userid = 1413086881, // User ID - get it in source HTML of your Instagram profile or look at the next example :)
+        var token = 'tokenb', // learn how to obtain it below
+        userid = userid, // User ID - get it in source HTML of your Instagram profile or look at the next example :)
         num_photos = 8; // how much photos do you want to get
 
 istek yapilacak adres:"https://api.instagram.com/v1/users/' + userid + '/media/recent; data: { access_token: token, count: num_photos }
 
-Instagramda her sayfa için ayri acces token ve client id token gibi bilgileri istegin data kisminda ayrica yazman lazim.
+Instagramda her sayfa iÃ§in ayri acces token ve client id token gibi bilgileri istegin data kisminda ayrica yazman lazim.
 
 -------------------------------facebook--------------------------------------------
 fbToken : Get Token diyerek elde ettigimiz Token
 fbAppId:App ID
 fbClientId: Get Token butonunun altindaki Submit butonuna tikladigimizda, alttaki ekranda belirtilen Id
-Dikkat edilmesi gereke v2.10 gibi sürümleri dogru yazmak.
- FB.api kullanilacak js.srcjs.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.10&appId=1888932581357686";
+Dikkat edilmesi gereke v2.10 gibi sÃ¼rÃ¼mleri dogru yazmak.
+ FB.api kullanilacak js.srcjs.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.10&appId=appid";
 
 
 fielda alanina lazim olan seyleri yaz. Bana postun fotografi, postun linki, yazisi ve tarihi lazimdi.
@@ -44,14 +44,14 @@ fielda alanina lazim olan seyleri yaz. Bana postun fotografi, postun linki, yazi
 
 .................Facebook sayfasinda nasil paylasim yapilir ?........................................
 
-Graph Api Explorer'da Page Access Tokens kisminda paylasim yapmak istedigimiz sayfa seçilir. Request publish_pages'a tiklanir Access Token not edilir.
+Graph Api Explorer'da Page Access Tokens kisminda paylasim yapmak istedigimiz sayfa seÃ§ilir. Request publish_pages'a tiklanir Access Token not edilir.
 Asagidaki kodda acces_token alanina elde edilen deger yazilir. Eger olmadiysa erisim izinlerinizi kontrol edin. Sayfalarimi okumaya publish etmeye yetkisi var mi vs.
 
 
 
 
 kod olarak:
-       FB.api('/me/feed', 'post', { message: 'Egitimlerimizi kaçirmayin ! www.egitimtakvimi.com', access_token: token }, function (response) {
+       FB.api('/me/feed', 'post', { message: 'Egitimlerimizi kaÃ§irmayin ! www.egitimtakvimi.com', access_token: token }, function (response) {
                     console.log('API response', response);
                     alert(response);
                     //document.getElementById('publishBtn').innerHTML = 'API response is ' + response.id;
@@ -65,22 +65,22 @@ kod olarak:
 https://apps.twitter.com/ adresinde yeni app olustur. Keys and Access Tokens tabinda gerekli bilgiler var.
 
 
-Twit çekme islemini C# tarafinda yaptim. Nuget'de TweetSharp indir.
-var consumerKey = "ZfyQc7ie9njVmg1wgaiBvxGNF";
-var consumerSecret = "vl1KPpGOKCYUEqstXEeUjlJUocqqsyew6xLKrV1Xc7OhtRwxJE";
-var token = "1444110469-BVM4Wr4ssIhd6zN7zyZZwgBy5J5RuVQW2wgRQIT";
-var tokenSecret = "jKBJKzyzVUj0K13f89qb79ejOkRmXj0sxzjgq568sO58L";
+Twit Ã§ekme islemini C# tarafinda yaptim. Nuget'de TweetSharp indir.
+var consumerKey = "ckey";
+var consumerSecret = "csecret";
+var token = "token-";
+var tokenSecret = "tokenSecret";
 var service = new TwitterService(consumerKey, consumerSecret);
 service.AuthenticateWith(token, tokenSecret);
 var tweetListesi = service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions { ScreenName = "ZEzber", Count = 8, IncludeRts = true });
 
-kodu çalistirilir. NewtonSoft.Json hata verdi reinstall ettim.
+kodu Ã§alistirilir. NewtonSoft.Json hata verdi reinstall ettim.
 
 .............................................twitter paylasim yapma................................................
-            var consumerKey = "ZfyQc7ie9njVmg1wgaiBvxGNF";
-            var consumerSecret = "vl1KPpGOKCYUEqstXEeUjlJUocqqsyew6xLKrV1Xc7OhtRwxJE";
-            var token = "1444110469-BVM4Wr4ssIhd6zN7zyZZwgBy5J5RuVQW2wgRQIT";
-            var tokenSecret = "jKBJKzyzVUj0K13f89qb79ejOkRmXj0sxzjgq568sO58L";
+            var consumerKey = "k";
+            var consumerSecret = "k";
+            var token = "k-k";
+            var tokenSecret = "k";
             var service = new TwitterService(consumerKey, consumerSecret);
             var path = System.Web.HttpContext.Current.Server.MapPath("/Content/Images/Slider/4a_slider_software_kutu.png");
             var stream = new FileStream(path, FileMode.Open);
@@ -94,11 +94,11 @@ kodu çalistirilir. NewtonSoft.Json hata verdi reinstall ettim.
 
 
 ---------------------------------------youtube------------------------------------------------
-Her hangi bir kanalin videolari çekilebilir ama kendinize "https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard%3Fproject%3Dfirstyoutubeapp-176308&organizationId=0" adresinde 
+Her hangi bir kanalin videolari Ã§ekilebilir ama kendinize "https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard%3Fproject%3Dfirstyoutubeapp-176308&organizationId=0" adresinde 
 bir app olusturmaniz lazim. 
 
-"https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCxHY_X8SqPja6YziAS4-wpYGqmNrF9cc&channelId=UCg4SlqeM8rICnsGQ0gkquXA&part=snippet,id&order=date&maxResults=8", adresine istek yapilir
-channelId videolari almak istediginiz kanalin Id'si (kanala tiklayinca url'de id'si çikiyor) key sizin olusturdugunuz projedeki key
+"https://www.googleapis.com/youtube/v3/search?key=key-wpYGqmNrF9cc&channelId=UCg4SlqeM8rICnsGQ0gkquXA&part=snippet,id&order=date&maxResults=8", adresine istek yapilir
+channelId videolari almak istediginiz kanalin Id'si (kanala tiklayinca url'de id'si Ã§ikiyor) key sizin olusturdugunuz projedeki key
 
 youtue video resmine response.items[i].snippet.thumbnails.medium.url ile erisebilirsin
 
@@ -107,19 +107,19 @@ youtue video resmine response.items[i].snippet.thumbnails.medium.url ile erisebi
 
 1)https://www.linkedin.com/developer/apps adresinde uygulama olustur.
 2)Olusturulan uygulama iin Istemci kimligi(client_id) ve Istemci gizliligi(client_secret) bilgileri verilecek.
-3)Yetkili Yeniden Yönlendirme URL’si: yazan yere linkedn datasini çekecegin linki yaz.
+3)Yetkili Yeniden YÃ¶nlendirme URLâ€™si: yazan yere linkedn datasini Ã§ekecegin linki yaz.
 4)access-token alde edilecek adres :
-https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=istemcikimligi&redirect_uri=Yetkili Yeniden Yönlendirme URL 
-adresine gidilir. Gidilen adres, içinde acces-tokeni'i barindiran sekilde açilir.code not al.
+https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=istemcikimligi&redirect_uri=Yetkili Yeniden YÃ¶nlendirme URL 
+adresine gidilir. Gidilen adres, iÃ§inde acces-tokeni'i barindiran sekilde aÃ§ilir.code not al.
 5)https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&code=CODEBIRONCEKIADIMDANELDEEDILEN&redirect_uri=REDIRECTURI&client_id=ISTEMCIKIMLIGI&client_secret=iSTEMCIGIZLILIGI
 http%3A%2F%2Flocalhost:50048
-5inci adimdaki url'i hazirda tut bir tek accesstoken alani dldurulacak olsun çünkü 4üncü adimda elde edilen code çook kisa sürede doluyor ve 5.ci adimdaki adreste bulunan redirect_uri linkini
+5inci adimdaki url'i hazirda tut bir tek accesstoken alani dldurulacak olsun Ã§Ã¼nkÃ¼ 4Ã¼ncÃ¼ adimda elde edilen code Ã§ook kisa sÃ¼rede doluyor ve 5.ci adimdaki adreste bulunan redirect_uri linkini
 girerken / yerine %2F : yerine :%3A kullanilmali yoksa hata veriyor.
 
 
-https://api.linkedin.com/v1/person/~/shares?oauth2_access_token=AQUvQptfzsVF9C3fs_BBv1OrvtODwarye2Rig318xjGb72-VWQbfS-yZuvgSD4Lr7dvwSBFU-TOkFXlK7NO8mesvtfIVd5hsVt0Zq_d61zlccQCMTLO00-xC-km058QqprGExFIHu9SV0J-Lv20jFv7Yz--5x2LrawFnCM-2w_xcau6Uacc&format=json
+https://api.linkedin.com/v1/person/~/shares?oauth2_access_token=k-k-k-k-xC-k-k--k-k&format=json
 
-acces_token=AQWzM3lYQZaVuL0dLkf54qLQaG0crhriY6wTiv9CUJ6hJJ2uGS_KbCi344n4uaEJaJccbahlHDs9XqqK4EteJlV-JteiK3DCRUoYmhRlB8s4L4_jNW8yPd-tpU8F0pHwjubG1FmoGuIPxlZzWMeXWsNIcTNmaLFdOobonloTpxtuaa9KEcLFr7p2ffs2EsgEXRIIy5t9I5tj_6mER_trJu9aBOaI6sfdsMiG0eLa7AD2xzluIWtm3fBY-tUHQ16pihqFs-LWSzMVmVH9Kk2NG9sYEvmuMzz-Y_AUkMtAj5BPxUExDCbCQ_ncufFzYwiiqchScpuT0ozJ35SbGd2Y2NXxtQPAgA
+acces_token=k-k-k-k-k
 ------------------------------slideshare---------------------------------------------------------
 1)Timespan dikkat et!
 
